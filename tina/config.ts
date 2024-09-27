@@ -3,8 +3,8 @@ import { CATEGORIES } from '../src/data/categories.ts'
 
 export default defineConfig({
 	branch: 'main',
-	clientId: '3f5633a9-28e6-4bfe-9e0a-0f422ca0aadd', // Get this from tina.io
-	token: 'c28ecb72fe4f0cfecf7adb598d5c156d994c7e5a', // Get this from tina.io
+	clientId: '1f4d10bc-c80c-406a-b36d-18538ec8c503', // Get this from tina.io
+	token: '77f0522d0779809d38330bb501e184f074f0447e', // Get this from tina.io
 
 	build: {
 		outputFolder: 'admin',
