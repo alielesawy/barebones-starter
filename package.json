@@ -1,5 +1,5 @@
 {
-	"name": "blog-template",
+	"name": "barebones-starter",
 	"type": "module",
 	"version": "1.1.0",
 	"description": "A template for creating a blog with Astro",
@@ -20,9 +20,9 @@
 		"url": "https://github.com/alielesawy/tech-blog/issues"
 	},
 	"scripts": {
-		"dev": "npx tinacms dev -c \"astro dev\"",
-		"start": " astro dev",
-		"build": "  astro build",
+		"dev": " tinacms dev -c \"astro dev\"",
+		"start": "tinacms build && astro dev",
+		"build": " tinacms build && astro build",
 		"sync": "astro sync",
 		"preview": "astro preview",
 		"postbuild": "pagefind --site dist",
@@ -36,6 +36,7 @@
 		"@astrojs/rss": "4.0.1",
 		"astro": "4.0.8",
 		"astro-font": "^0.0.72",
+		"next": "^14.2.13",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"tinacms": "^2.2.5"
@@ -53,7 +54,6 @@
 		"eslint": "^8.56.0",
 		"eslint-plugin-astro": "^0.31.0",
 		"eslint-plugin-jsx-a11y": "^6.8.0",
-		"husky": "^8.0.3",
 		"lint-staged": "^15.2.0",
 		"mdast-util-to-string": "^4.0.0",
 		"motion": "^10.16.4",

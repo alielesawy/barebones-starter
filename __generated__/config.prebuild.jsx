@@ -1,11 +1,11 @@
+// tina/config.ts
 import { defineConfig } from 'tinacms'
-import { CATEGORIES } from '../src/data/categories.ts'
-
-export default defineConfig({
+var config_default = defineConfig({
 	branch: 'main',
-	clientId: '3f5633a9-28e6-4bfe-9e0a-0f422ca0aadd', // Get this from tina.io
-	token: 'c28ecb72fe4f0cfecf7adb598d5c156d994c7e5a', // Get this from tina.io
-
+	clientId: '3f5633a9-28e6-4bfe-9e0a-0f422ca0aadd',
+	// Get this from tina.io
+	token: 'c28ecb72fe4f0cfecf7adb598d5c156d994c7e5a',
+	// Get this from tina.io
 	build: {
 		outputFolder: 'admin',
 		publicFolder: 'public'
@@ -41,3 +41,4 @@ export default defineConfig({
 		]
 	}
 })
+export { config_default as default }
