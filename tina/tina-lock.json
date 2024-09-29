@@ -6,8 +6,78 @@
 			{
 				"name": "post",
 				"label": "Posts",
-				"path": "content/posts",
+				"path": "src/content/blog",
+				"format": "mdx",
 				"fields": [
+					{
+						"type": "image",
+						"label": "Cover Image",
+						"required": true,
+						"name": "heroImage",
+						"description": "The image used for the cover of the post",
+						"namespace": ["post", "heroImage"],
+						"searchable": false,
+						"uid": false
+					},
+					{
+						"type": "string",
+						"required": true,
+						"name": "category",
+						"label": "Category",
+						"description": "Select a category for this post",
+						"options": [
+							"Programming",
+							"DAS",
+							"Web Development",
+							"Linux",
+							"Cloud",
+							"Personal",
+							"عربي"
+						],
+						"namespace": ["post", "category"],
+						"searchable": true,
+						"uid": false
+					},
+					{
+						"type": "string",
+						"label": "Description",
+						"required": true,
+						"name": "description",
+						"description": "A short description of the post",
+						"namespace": ["post", "description"],
+						"searchable": true,
+						"uid": false
+					},
+					{
+						"type": "datetime",
+						"name": "pubDate",
+						"label": "Publication Date",
+						"required": true,
+						"namespace": ["post", "pubDate"],
+						"searchable": true,
+						"uid": false
+					},
+					{
+						"name": "draft",
+						"label": "Draft",
+						"type": "boolean",
+						"description": "If this is checked, the post will not be published",
+						"namespace": ["post", "draft"],
+						"searchable": true,
+						"uid": false
+					},
+					{
+						"type": "string",
+						"name": "tags",
+						"required": true,
+						"label": "Tags",
+						"description": "Tags for this post",
+						"list": true,
+						"ui": { "component": "tags" },
+						"namespace": ["post", "tags"],
+						"searchable": true,
+						"uid": false
+					},
 					{
 						"type": "string",
 						"name": "title",
@@ -20,19 +90,38 @@
 					},
 					{
 						"type": "rich-text",
-						"name": "body",
 						"label": "Body",
+						"name": "SButton",
 						"isBody": true,
-						"namespace": ["post", "body"],
+						"templates": [
+							{
+								"label": "SButton",
+								"name": "SButton",
+								"fields": [
+									{
+										"type": "rich-text",
+										"label": "SButton",
+										"name": "children",
+										"isBody": true,
+										"namespace": ["post", "SButton", "SButton", "children"],
+										"searchable": true,
+										"parser": { "type": "mdx" },
+										"uid": false
+									}
+								],
+								"namespace": ["post", "SButton", "SButton"]
+							}
+						],
+						"namespace": ["post", "SButton"],
 						"searchable": true,
-						"parser": { "type": "markdown" },
+						"parser": { "type": "mdx" },
 						"uid": false
 					}
 				],
 				"namespace": ["post"]
 			}
 		],
-		"config": { "media": { "tina": { "publicFolder": "public", "mediaRoot": "uploads" } } }
+		"config": { "media": { "tina": { "publicFolder": "", "mediaRoot": "/src/assets/images" } } }
 	},
 	"lookup": {
 		"DocumentConnection": {
@@ -684,6 +773,63 @@
 				"fields": [
 					{
 						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "heroImage" },
+						"arguments": [],
+						"type": {
+							"kind": "NonNullType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					},
+					{
+						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "category" },
+						"arguments": [],
+						"type": {
+							"kind": "NonNullType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					},
+					{
+						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "description" },
+						"arguments": [],
+						"type": {
+							"kind": "NonNullType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					},
+					{
+						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "pubDate" },
+						"arguments": [],
+						"type": {
+							"kind": "NonNullType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					},
+					{
+						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "draft" },
+						"arguments": [],
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					},
+					{
+						"kind": "FieldDefinition",
+						"name": { "kind": "Name", "value": "tags" },
+						"arguments": [],
+						"type": {
+							"kind": "NonNullType",
+							"type": {
+								"kind": "ListType",
+								"type": {
+									"kind": "NonNullType",
+									"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+								}
+							}
+						}
+					},
+					{
+						"kind": "FieldDefinition",
 						"name": { "kind": "Name", "value": "title" },
 						"arguments": [],
 						"type": {
@@ -693,7 +839,7 @@
 					},
 					{
 						"kind": "FieldDefinition",
-						"name": { "kind": "Name", "value": "body" },
+						"name": { "kind": "Name", "value": "SButton" },
 						"arguments": [],
 						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
 					},
@@ -722,6 +868,35 @@
 						"type": {
 							"kind": "NonNullType",
 							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
+						}
+					}
+				]
+			},
+			{
+				"kind": "InputObjectTypeDefinition",
+				"name": { "kind": "Name", "value": "ImageFilter" },
+				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "startsWith" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "eq" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "exists" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "in" },
+						"type": {
+							"kind": "ListType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
 						}
 					}
 				]
@@ -757,6 +932,56 @@
 			},
 			{
 				"kind": "InputObjectTypeDefinition",
+				"name": { "kind": "Name", "value": "DatetimeFilter" },
+				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "after" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "before" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "eq" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "exists" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "in" },
+						"type": {
+							"kind": "ListType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					}
+				]
+			},
+			{
+				"kind": "InputObjectTypeDefinition",
+				"name": { "kind": "Name", "value": "BooleanFilter" },
+				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "eq" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "exists" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					}
+				]
+			},
+			{
+				"kind": "InputObjectTypeDefinition",
 				"name": { "kind": "Name", "value": "RichTextFilter" },
 				"fields": [
 					{
@@ -778,8 +1003,63 @@
 			},
 			{
 				"kind": "InputObjectTypeDefinition",
+				"name": { "kind": "Name", "value": "PostSButtonSButtonFilter" },
+				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "children" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
+					}
+				]
+			},
+			{
+				"kind": "InputObjectTypeDefinition",
+				"name": { "kind": "Name", "value": "PostSButtonFilter" },
+				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "SButton" },
+						"type": {
+							"kind": "NamedType",
+							"name": { "kind": "Name", "value": "PostSButtonSButtonFilter" }
+						}
+					}
+				]
+			},
+			{
+				"kind": "InputObjectTypeDefinition",
 				"name": { "kind": "Name", "value": "PostFilter" },
 				"fields": [
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "heroImage" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "ImageFilter" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "category" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "description" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "pubDate" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "DatetimeFilter" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "draft" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "BooleanFilter" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "tags" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+					},
 					{
 						"kind": "InputValueDefinition",
 						"name": { "kind": "Name", "value": "title" },
@@ -787,8 +1067,11 @@
 					},
 					{
 						"kind": "InputValueDefinition",
-						"name": { "kind": "Name", "value": "body" },
-						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
+						"name": { "kind": "Name", "value": "SButton" },
+						"type": {
+							"kind": "NamedType",
+							"name": { "kind": "Name", "value": "PostSButtonFilter" }
+						}
 					}
 				]
 			},
@@ -1097,12 +1380,45 @@
 				"fields": [
 					{
 						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "heroImage" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "category" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "description" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "pubDate" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "draft" },
+						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+					},
+					{
+						"kind": "InputValueDefinition",
+						"name": { "kind": "Name", "value": "tags" },
+						"type": {
+							"kind": "ListType",
+							"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+						}
+					},
+					{
+						"kind": "InputValueDefinition",
 						"name": { "kind": "Name", "value": "title" },
 						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
 					},
 					{
 						"kind": "InputValueDefinition",
-						"name": { "kind": "Name", "value": "body" },
+						"name": { "kind": "Name", "value": "SButton" },
 						"type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
 					}
 				]
