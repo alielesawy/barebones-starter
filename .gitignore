@@ -6,7 +6,7 @@
 # dependencies
 node_modules/
 
-
+__generated__
 
 # logs
 npm-debug.log*
