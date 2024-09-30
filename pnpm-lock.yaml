@@ -7840,7 +7840,7 @@ snapshots:
       '@graphql-tools/utils': 9.2.1(graphql@15.8.0)
       graphql: 15.8.0
       resolve-from: 5.0.0
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   '@graphql-tools/load@7.8.14(graphql@15.8.0)':
     dependencies:
@@ -7854,19 +7854,19 @@ snapshots:
     dependencies:
       '@graphql-tools/utils': 9.2.1(graphql@15.8.0)
       graphql: 15.8.0
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   '@graphql-tools/optimize@2.0.0(graphql@15.8.0)':
     dependencies:
       graphql: 15.8.0
-      tslib: 2.5.3
+      tslib: 2.7.0
 
   '@graphql-tools/relay-operation-optimizer@7.0.0(encoding@0.1.13)(graphql@15.8.0)':
     dependencies:
       '@ardatan/relay-compiler': 12.0.0(encoding@0.1.13)(graphql@15.8.0)
-      '@graphql-tools/utils': 10.0.7(graphql@15.8.0)
+      '@graphql-tools/utils': 10.5.4(graphql@15.8.0)
       graphql: 15.8.0
-      tslib: 2.5.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -7876,7 +7876,7 @@ snapshots:
       '@graphql-tools/merge': 8.4.2(graphql@15.8.0)
       '@graphql-tools/utils': 9.2.1(graphql@15.8.0)
       graphql: 15.8.0
-      tslib: 2.6.2
+      tslib: 2.7.0
       value-or-promise: 1.0.12
 
   '@graphql-tools/utils@10.0.7(graphql@15.8.0)':
@@ -7884,7 +7884,7 @@ snapshots:
       '@graphql-typed-document-node/core': 3.2.0(graphql@15.8.0)
       dset: 3.1.4
       graphql: 15.8.0
-      tslib: 2.5.3
+      tslib: 2.7.0
 
   '@graphql-tools/utils@10.5.4(graphql@15.8.0)':
     dependencies:
@@ -7892,13 +7892,13 @@ snapshots:
       cross-inspect: 1.0.1
       dset: 3.1.4
       graphql: 15.8.0
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@graphql-tools/utils@9.2.1(graphql@15.8.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@15.8.0)
       graphql: 15.8.0
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   '@graphql-typed-document-node/core@3.2.0(graphql@15.8.0)':
     dependencies:
@@ -10623,7 +10623,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   camelcase-css@2.0.1: {}
 
@@ -10642,7 +10642,7 @@ snapshots:
   capital-case@1.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
       upper-case-first: 2.0.2
 
   catering@2.1.1: {}
@@ -10688,7 +10688,7 @@ snapshots:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   character-entities-html4@2.1.0: {}
 
@@ -10829,7 +10829,7 @@ snapshots:
   constant-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
       upper-case: 2.0.2
 
   content-disposition@0.5.4:
@@ -10872,7 +10872,7 @@ snapshots:
 
   cross-inspect@1.0.1:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   cross-spawn@7.0.3:
     dependencies:
@@ -11003,7 +11003,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   dotenv@16.3.1: {}
 
@@ -11773,7 +11773,7 @@ snapshots:
 
   hast-util-from-html@2.0.1:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       devlop: 1.1.0
       hast-util-from-parse5: 8.0.1
       parse5: 7.1.2
@@ -11782,7 +11782,7 @@ snapshots:
 
   hast-util-from-parse5@8.0.1:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/unist': 3.0.1
       devlop: 1.1.0
       hastscript: 8.0.0
@@ -11793,7 +11793,7 @@ snapshots:
 
   hast-util-parse-selector@4.0.0:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
 
   hast-util-raw@9.0.1:
     dependencies:
@@ -11883,7 +11883,7 @@ snapshots:
 
   hast-util-to-parse5@8.0.0:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
       devlop: 1.1.0
       property-information: 6.3.0
@@ -11897,7 +11897,7 @@ snapshots:
 
   hastscript@8.0.0:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
       hast-util-parse-selector: 4.0.0
       property-information: 6.3.0
@@ -11906,7 +11906,7 @@ snapshots:
   header-case@2.0.4:
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   hey-listen@1.0.8: {}
 
@@ -12099,7 +12099,7 @@ snapshots:
 
   is-lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   is-map@2.0.2: {}
 
@@ -12168,7 +12168,7 @@ snapshots:
 
   is-upper-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   is-weakmap@2.0.1: {}
 
@@ -12433,11 +12433,11 @@ snapshots:
 
   lower-case-first@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   lru-cache@10.0.0: {}
 
@@ -12717,7 +12717,7 @@ snapshots:
   mdast-util-mdx-expression@2.0.0:
     dependencies:
       '@types/estree-jsx': 1.0.2
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.2
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.0
@@ -12745,7 +12745,7 @@ snapshots:
   mdast-util-mdx-jsx@3.0.0:
     dependencies:
       '@types/estree-jsx': 1.0.2
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.2
       '@types/unist': 3.0.1
       ccount: 2.0.1
@@ -12793,7 +12793,7 @@ snapshots:
   mdast-util-mdxjs-esm@2.0.1:
     dependencies:
       '@types/estree-jsx': 1.0.2
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.2
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.0
@@ -13557,7 +13557,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   node-abi@3.51.0:
     dependencies:
@@ -13735,7 +13735,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   parent-module@1.0.1:
     dependencies:
@@ -13789,12 +13789,12 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   path-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   path-exists@4.0.0: {}
 
@@ -14257,7 +14257,7 @@ snapshots:
 
   rehype-parse@9.0.0:
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       hast-util-from-html: 2.0.1
       unified: 11.0.4
 
@@ -14554,7 +14554,7 @@ snapshots:
   sentence-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
       upper-case-first: 2.0.2
 
   serve-static@1.16.2:
@@ -14744,7 +14744,7 @@ snapshots:
   snake-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   source-map-js@1.0.2: {}
 
@@ -14754,7 +14754,7 @@ snapshots:
 
   sponge-case@1.0.1:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   sprintf-js@1.0.3: {}
 
@@ -14914,7 +14914,7 @@ snapshots:
 
   swap-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   synckit@0.8.5:
     dependencies:
@@ -15192,7 +15192,7 @@ snapshots:
 
   title-case@3.0.3:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   titleize@3.0.0: {}
 
@@ -15464,11 +15464,11 @@ snapshots:
 
   upper-case-first@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   upper-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   uri-js@4.4.1:
     dependencies:
