@@ -69,8 +69,8 @@
 		"typescript": "^5.2.2"
 	},
 	"lint-staged": {
-		"*.{md,mdx}": [
-			"prettier --write --plugin-search-dir=."
+		"*.{mdx}": [
+			"node formatFrontmatter.js"
 		]
 	}
 }
