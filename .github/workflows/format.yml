@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '16' # Or your preferred version
       - run: npm install
-      - run: node /workspaces/barebones-starter/formatFrontmatter.js # Run the formatting script
+      - run: pnpm exec lint-staged # Run the formatting script
       - name: Push changes back to repo
         run: |
           git config --global user.name "GitHub Action"
