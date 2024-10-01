@@ -36,7 +36,7 @@ const formatFrontmatter = (filePath) => {
       }
       return `${key}: '${value}'`;
     })
-    // Ensure tags are formatted as an array of strings
+    // Remove dashes and format tags as an array
     .replace(/tags:\s*-?\s*(.*)/, (match, tagsContent) => {
       const tagsArray = tagsContent
         .split(',') // Split by comma
@@ -44,15 +44,11 @@ const formatFrontmatter = (filePath) => {
         .filter(tag => tag) // Filter out empty strings
         .map(tag => `'${tag.replace(/['"]/g, '')}'`); // Ensure tags are quoted properly and remove any extra quotes
       return `tags: [${tagsArray.join(', ')}]`;
-    })
-    .replace(/\s*:\s*'/g, ': \'') // Ensure there's no space before the colon in keys
-    .replace(/'\s+/g, '\''); // Remove space before closing quote
+    });
 
   // Insert line breaks between each key-value pair
-  const fields = formattedFrontmatter.split(/(?<=\])|(?<=\')/g); // Split after the end of tags array or closing quotes
-  const formattedWithNewLines = fields
-    .map(field => field.trim()) // Trim spaces
-    .join('\n'); // Ensure newlines between fields
+  const fields = formattedFrontmatter.split('\n').map(line => line.trim());
+  const formattedWithNewLines = fields.join('\n');
 
   // Combine formatted frontmatter and content
   const newContent = `---\n${formattedWithNewLines}\n---\n${parts.slice(2).join('\n---\n')}`;
