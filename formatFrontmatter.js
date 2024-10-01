@@ -12,14 +12,14 @@ const isFormatted = (frontmatter) => {
 // Function to format frontmatter
 const formatFrontmatter = (filePath) => {
   const content = fs.readFileSync(filePath, 'utf-8');
-  const parts = content.split(/---\s*\n/);
+  const parts = content.split('---').map(part => part.trim());
 
   if (parts.length < 3) {
     console.log(`Invalid format in file: ${filePath}`);
     return;
   }
 
-  let frontmatter = parts[1].trim();
+  let frontmatter = parts[1];
 
   // Check if already formatted
   if (isFormatted(frontmatter)) {
@@ -29,32 +29,33 @@ const formatFrontmatter = (filePath) => {
 
   // Format the frontmatter correctly
   const formattedFrontmatter = frontmatter
-    // Add single quotes around unquoted values but only if not already quoted
+    // Add single quotes around unquoted values but respect already quoted strings
     .replace(/(\w+):\s*([^'\n]+)/g, (match, key, value) => {
-      if (!value.startsWith("'") && !value.endsWith("'")) {
-        return `${key}: '${value.trim()}'`; // Add quotes only if not present
+      if (value.startsWith("'") && value.endsWith("'")) {
+        return `${key}: ${value}`;
       }
-      return `${key}: ${value.trim()}`; // Leave as is if already quoted
+      return `${key}: '${value}'`;
     })
-    // Format the tags array
-    .replace(/tags:\s*\[?(.*?)\]?/gs, (match, p1) => {
-      // Split tags by newlines or commas, clean spaces, and remove any extra characters
-      const tagsArray = p1.split(/[\n,]+/)
-        .map(tag => tag.replace(/^-/, '').trim()) // Remove leading hyphens and trim spaces
-        .filter(tag => tag.length > 0) // Remove empty strings
-        .map(tag => tag.replace(/,$/, '').trim()) // Remove trailing commas and trim spaces
-        .map(tag => tag.toLowerCase()) // Optional: lowercase tags
-        .map(tag => `'${tag}'`); // Wrap each tag in single quotes
+    // Ensure tags are formatted as an array of strings
+    .replace(/tags:\s*-?\s*(.*)/, (match, tagsContent) => {
+      const tagsArray = tagsContent
+        .split(',') // Split by comma
+        .map(tag => tag.replace(/^-?\s*/, '').trim()) // Remove leading dashes or spaces and trim each tag
+        .filter(tag => tag) // Filter out empty strings
+        .map(tag => `'${tag.replace(/['"]/g, '')}'`); // Ensure tags are quoted properly and remove any extra quotes
+      return `tags: [${tagsArray.join(', ')}]`;
+    })
+    .replace(/\s*:\s*'/g, ': \'') // Ensure there's no space before the colon in keys
+    .replace(/'\s+/g, '\''); // Remove space before closing quote
 
-      // Return formatted tags array
-      return `tags: [${tagsArray.join(', ')}]`; 
-    })
-    // Ensure each field is on a new line
-    .replace(/\n+/g, '\n')
-    .replace(/\n\s+/g, '\n'); // Remove any extra space after newlines
+  // Insert line breaks between each key-value pair
+  const fields = formattedFrontmatter.split(/(?<=\])|(?<=\')/g); // Split after the end of tags array or closing quotes
+  const formattedWithNewLines = fields
+    .map(field => field.trim()) // Trim spaces
+    .join('\n'); // Ensure newlines between fields
 
   // Combine formatted frontmatter and content
-  const newContent = `---\n${formattedFrontmatter}\n---\n${parts.slice(2).join('---\n')}`;
+  const newContent = `---\n${formattedWithNewLines}\n---\n${parts.slice(2).join('\n---\n')}`;
   fs.writeFileSync(filePath, newContent, 'utf-8');
   console.log(`Formatted file: ${filePath}`);
 };
