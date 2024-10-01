@@ -69,7 +69,7 @@
 		"typescript": "^5.2.2"
 	},
 	"lint-staged": {
-		"*.{mdx}": [
+		"*.mdx": [
 			"node formatFrontmatter.js"
 		]
 	}
