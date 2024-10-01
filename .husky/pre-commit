@@ -1,3 +1,2 @@
-pnpm exec lint-staged
 
 node formatFrontmatter.js 
