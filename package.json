@@ -27,7 +27,7 @@
 		"preview": "astro preview",
 		"postbuild": "pagefind --site dist",
 		"format:check": "prettier --plugin-search-dir=. --check .",
-		"format": "prettier --plugin-search-dir=. --write .",
+		"format": "node formatFrontmatter.js && git add . && git commit -m 'Auto-format from CI' || echo 'No formatting needed'",
 		"lint": "eslint .",
 		"pre-commit": "lint-staged",
 		"prepare": "husky"

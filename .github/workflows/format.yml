@@ -1,0 +1,23 @@
+name: Format MDX Files
+
+on:
+  push:
+    branches:
+      - main # Or the branch Tina bot commits to
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Or your preferred version
+      - run: npm install
+      - run: node ../../formatFrontmatter.js # Run the formatting script
+      - name: Push changes back to repo
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git push
