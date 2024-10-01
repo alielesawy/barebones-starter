@@ -1,22 +1,20 @@
 ---
 title: 'TypeScript2'
 description: 'TypeScript2 description here 2'
-pubDate: 'Jul 02 2022'
+pubDate:  'Jul 02 2022'
 heroImage: '../../assets/images/placeholder-about.jpg'
-<<<<<<< HEAD
 category: 'Programming'
-
-
-tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
+tags: [JavaScript', 'css', 'HTML5', 'GitHub]
 ---
-
 **If you know HTML, you already know enough to write your first Astro component.**
 
 Astro component syntax is a superset of HTML. The syntax was [designed to feel familiar to anyone with experience writing HTML or JSX](#differences-between-astro-and-jsx), and adds support for including components and JavaScript expressions.
 
 ## JSX-like Expressions
 
-You can define local JavaScript variables inside of the frontmatter component script between the two code fences (`---`) of an Astro component. You can then inject these variables into the component's HTML template using JSX-like expressions!
+You can define local JavaScript variables inside of the frontmatter component script between the two code fences (`
+---
+`) of an Astro component. You can then inject these variables into the component's HTML template using JSX-like expressions!
 
 :::note[dynamic vs reactive]
 Using this approach, you can include **dynamic** values that are calculated in the frontmatter. But once included, these values are not **reactive** and will never change. Astro components are templates that only run once, during the rendering step.
@@ -32,7 +30,6 @@ Local variables can be added into the HTML using the curly braces syntax:
 ---
 const name = 'Astro'
 ---
-
 <div>
 	<h1>Hello {name}!</h1>
 	<!-- Outputs <h1>Hello Astro!</h1> -->
@@ -47,7 +44,6 @@ Local variables can be used in curly braces to pass attribute values to both HTM
 ---
 const name = 'Astro'
 ---
-
 <h1 class={name}>Attribute expressions are supported</h1>
 
 <MyComponent templateLiteralNameAttribute={`MyNameIs${name}`} />
@@ -64,7 +60,6 @@ function handleClick() {
 	console.log('button clicked!')
 }
 ---
-
 <!-- ❌ This doesn't work! ❌ -->
 <button onClick={handleClick}>Nothing will happen when you click me!</button>
 ```
@@ -75,7 +70,6 @@ Instead, use a client-side script to add the event handler, like you would in va
 ---
 // do-this-instead.astro
 ---
-
 <button id='button'>Click Me</button>
 <script>
 	function handleClick() {
@@ -95,7 +89,6 @@ Local variables can be used in JSX-like functions to produce dynamically-generat
 ---
 const items = ['Dog', 'Cat', 'Platypus']
 ---
-
 <ul>
 	{items.map((item) => <li>{item}</li>)}
 </ul>
@@ -107,7 +100,6 @@ Astro can conditionally display HTML using JSX logical operators and ternary exp
 ---
 const visible = true
 ---
-
 {visible && <p>Show me!</p>}
 
 {visible ? <p>Show me!</p> : <p>Else show me!</p>}
@@ -123,7 +115,6 @@ import MyComponent from './MyComponent.astro'
 const Element = 'div'
 const Component = MyComponent
 ---
-
 <Element>Hello!</Element>
 <!-- renders as <div>Hello!</div> -->
 <Component />
@@ -146,7 +137,6 @@ Fragments can be useful to avoid wrapper elements when adding [`set:*` directive
 ---
 const htmlString = '<p>Raw HTML content</p>'
 ---
-
 <Fragment set:html={htmlString} />
 ```
 
@@ -171,7 +161,6 @@ An Astro component template can render multiple elements with no need to wrap ev
 ---
 // Template with multiple elements
 ---
-
 <p>No need to wrap elements in a single containing element.</p>
 <p>Astro supports multiple root elements in a template.</p>
 ```
@@ -184,7 +173,6 @@ In Astro, you can use standard HTML comments or JavaScript-style comments.
 ---
 
 ---
-
 <!-- HTML comment syntax is valid in .astro files -->{/* JS comment syntax is also valid */}
 ```
 
