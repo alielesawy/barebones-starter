@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
 	/* body {
@@ -24,7 +24,7 @@
 	html.dark .shiki,
 	html.dark .shiki span {
 	  color: var(--shiki-dark) !important;
-	  background-color: theme(colors.gray.900) !important;
+	  background-color: #1a1a1a !important; /* Replace with the actual color value */
 	}
 }
 
@@ -38,3 +38,23 @@
 .shadow {
 	box-shadow: -5px 3px 8px 1px rgba(0, 0, 0, 0.12);
 }
+/* In your global CSS or a component CSS file */
+
+.rtl {
+	direction: rtl;
+	text-align: right;
+  }
+  
+  .ltr {
+	direction: ltr;
+	text-align: left;
+  }
+  
+  .prose-rtl {
+	direction: rtl;
+  }
+  
+  .prose-ltr {
+	direction: ltr;
+  }
+  

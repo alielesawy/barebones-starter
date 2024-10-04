@@ -80,6 +80,17 @@ export default defineConfig({
             required: true
           },
           {
+            type: 'string',
+            name: 'lang',
+            label: 'Language',
+            required: true,
+            options: [
+              { value: 'en', label: 'English' },
+              { value: 'ar', label: 'Arabic' }
+            ],
+            description: 'Select the language of the post'
+          },
+          {
             type: 'rich-text',
             label: 'Body',
             name: 'SButton',
