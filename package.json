@@ -26,8 +26,8 @@
     "sync": "astro sync",
     "preview": "astro preview",
     "postbuild": "pagefind --site dist",
-    "format:check": "prettier --plugin-search-dir=. --check .",
-    "format": "node formatFrontmatter.js && git add . && git commit -m 'Auto-format from CI' || echo 'No formatting needed'",
+    "format:check": "prettier --plugin-search-dir=. --check *.mdx",
+    "format": "pnpm exec prettier --plugin-search-dir=. --write '**/*.mdx'",
     "lint": "eslint .",
     "pre-commit": "lint-staged",
     "prepare": "husky"
@@ -70,7 +70,7 @@
   },
   "lint-staged": {
     "*.{astro,js,jsx,ts,tsx,md,mdx,json}": [
-      "prettier --write --plugin-search-dir=."
+      "pnpm exec prettier --write --plugin-search-dir=."
     ]
   }
 }

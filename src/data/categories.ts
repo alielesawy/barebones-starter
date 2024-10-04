@@ -1,10 +1,18 @@
 // List of categories for blog posts
 export const CATEGORIES = [
-	'Programming',
-	'DAS',
-	'Web Development',
-	'Linux',
-	'Cloud',
-	'Personal',
-	'عربي'
-] as const
+  'Programming',
+  'DSA',
+  'Web Development',
+  'Linux',
+  'Cloud',
+  'Personal',
+  'DevOps',
+  'Productivity',
+  'Books',
+  'Databases',
+  'خواطر',
+  'طلب العلم',
+  'التقنية',
+  'التطوير الشخصي',
+  'Student Benefits'
+] as const;
