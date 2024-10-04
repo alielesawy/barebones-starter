@@ -9,19 +9,41 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16' # Or your preferred version
-      - run: npm install
-      - run: node formatFrontmatter.js  # Run the formatting script
-      - name: Push changes back to repo
+
+      # Step 3: Install dependencies (pnpm)
+      - run: pnpm install
+
+      # Step 4: Check if files need formatting
+      - name: Check for formatting issues
+        id: format_check
+        run: |
+          pnpm exec prettier --check '**/*.mdx' || exit 1  # Exit 1 if formatting is needed
+
+      # Step 5: Format only if required (if the check fails)
+      - name: Run the formatting script if needed
+        if: failure()  # Run if formatting check fails
+        run: |
+          node formatFrontmatter.js  # Run the custom formatting script
+          pnpm exec prettier --write '**/*.mdx'
+
+      # Step 6: Configure GitHub user info for committing changes
+      - name: Configure Git
+        if: failure()  # Only run if there are formatting changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
+      # Step 7: Commit and push changes (only if formatting was done)
       - name: Commit and push changes
+        if: failure()  # Only push if there are changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |

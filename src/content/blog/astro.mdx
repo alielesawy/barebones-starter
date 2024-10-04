@@ -6,21 +6,28 @@ heroImage: ../../assets/images/placeholder-about.jpg
 category: Programming
 tags: JavaScript, css, HTML5, GitHub
 ---
-**If you know HTML, you already know enough to write your first Astro component.**
 
-Astro component syntax is a superset of HTML. The syntax was [designed to feel familiar to anyone with experience writing HTML or JSX](#differences-between-astro-and-jsx), and adds support for including components and JavaScript expressions.
+**If you know HTML, you already know enough to write your first Astro
+component.**
+
+Astro component syntax is a superset of HTML. The syntax was
+[designed to feel familiar to anyone with experience writing HTML or JSX](#differences-between-astro-and-jsx),
+and adds support for including components and JavaScript expressions.
 
 ## JSX-like Expressions
 
-You can define local JavaScript variables inside of the frontmatter component script between the two code fences (`
----
-`) of an Astro component. You can then inject these variables into the component's HTML template using JSX-like expressions!
+## You can define local JavaScript variables inside of the frontmatter component script between the two code fences (`
 
-:::note[dynamic vs reactive]
-Using this approach, you can include **dynamic** values that are calculated in the frontmatter. But once included, these values are not **reactive** and will never change. Astro components are templates that only run once, during the rendering step.
+`) of an Astro component. You can then inject these variables into the
+component's HTML template using JSX-like expressions!
 
-See below for more examples of [differences between Astro and JSX](#differences-between-astro-and-jsx).
-:::
+:::note[dynamic vs reactive] Using this approach, you can include **dynamic**
+values that are calculated in the frontmatter. But once included, these values
+are not **reactive** and will never change. Astro components are templates that
+only run once, during the rendering step.
+
+See below for more examples of
+[differences between Astro and JSX](#differences-between-astro-and-jsx). :::
 
 ### Variables
 
@@ -38,7 +45,8 @@ const name = 'Astro'
 
 ### Dynamic Attributes
 
-Local variables can be used in curly braces to pass attribute values to both HTML elements and components:
+Local variables can be used in curly braces to pass attribute values to both
+HTML elements and components:
 
 ```astro title="src/components/DynamicAttributes.astro" "{name}" "${name}"
 ---
@@ -49,9 +57,9 @@ const name = 'Astro'
 <MyComponent templateLiteralNameAttribute={`MyNameIs${name}`} />
 ```
 
-:::caution
-HTML attributes will be converted to strings, so it is not possible to pass functions and objects to HTML elements.
-For example, you can't assign an event handler to an HTML element in an Astro component:
+:::caution HTML attributes will be converted to strings, so it is not possible
+to pass functions and objects to HTML elements. For example, you can't assign an
+event handler to an HTML element in an Astro component:
 
 ```astro
 ---
@@ -64,7 +72,8 @@ function handleClick() {
 <button onClick={handleClick}>Nothing will happen when you click me!</button>
 ```
 
-Instead, use a client-side script to add the event handler, like you would in vanilla JavaScript:
+Instead, use a client-side script to add the event handler, like you would in
+vanilla JavaScript:
 
 ```astro
 ---
@@ -83,7 +92,8 @@ Instead, use a client-side script to add the event handler, like you would in va
 
 ### Dynamic HTML
 
-Local variables can be used in JSX-like functions to produce dynamically-generated HTML elements:
+Local variables can be used in JSX-like functions to produce
+dynamically-generated HTML elements:
 
 ```astro title="src/components/DynamicHtml.astro" "{item}"
 ---
@@ -94,7 +104,8 @@ const items = ['Dog', 'Cat', 'Platypus']
 </ul>
 ```
 
-Astro can conditionally display HTML using JSX logical operators and ternary expressions.
+Astro can conditionally display HTML using JSX logical operators and ternary
+expressions.
 
 ```astro title="src/components/ConditionalHtml.astro" "visible"
 ---
@@ -107,7 +118,8 @@ const visible = true
 
 ### Dynamic Tags
 
-You can also use dynamic tags by setting a variable to an HTML tag name or a component import:
+You can also use dynamic tags by setting a variable to an HTML tag name or a
+component import:
 
 ```astro title="src/components/DynamicTags.astro" /Element|(?<!My)Component/
 ---
@@ -123,15 +135,22 @@ const Component = MyComponent
 
 When using dynamic tags:
 
-- **Variable names must be capitalized.** For example, use `Element`, not `element`. Otherwise, Astro will try to render your variable name as a literal HTML tag.
+- **Variable names must be capitalized.** For example, use `Element`, not
+  `element`. Otherwise, Astro will try to render your variable name as a literal
+  HTML tag.
 
-- **Hydration directives are not supported.** When using [`client:*` hydration directives](/en/core-concepts/framework-components/#hydrating-interactive-components), Astro needs to know which components to bundle for production, and the dynamic tag pattern prevents this from working.
+- **Hydration directives are not supported.** When using
+  [`client:*` hydration directives](/en/core-concepts/framework-components/#hydrating-interactive-components),
+  Astro needs to know which components to bundle for production, and the dynamic
+  tag pattern prevents this from working.
 
 ### Fragments
 
 Astro supports using either `<Fragment> </Fragment>` or the shorthand `<> </>`.
 
-Fragments can be useful to avoid wrapper elements when adding [`set:*` directives](/en/reference/directives-reference/#sethtml), as in the following example:
+Fragments can be useful to avoid wrapper elements when adding
+[`set:*` directives](/en/reference/directives-reference/#sethtml), as in the
+following example:
 
 ```astro title="src/components/SetHtml.astro" "Fragment"
 ---
@@ -142,11 +161,15 @@ const htmlString = '<p>Raw HTML content</p>'
 
 ### Differences between Astro and JSX
 
-Astro component syntax is a superset of HTML. It was designed to feel familiar to anyone with HTML or JSX experience, but there are a couple of key differences between `.astro` files and JSX.
+Astro component syntax is a superset of HTML. It was designed to feel familiar
+to anyone with HTML or JSX experience, but there are a couple of key differences
+between `.astro` files and JSX.
 
 #### Attributes
 
-In Astro, you use the standard `kebab-case` format for all HTML attributes instead of the `camelCase` used in JSX. This even works for `class`, which is not supported by React.
+In Astro, you use the standard `kebab-case` format for all HTML attributes
+instead of the `camelCase` used in JSX. This even works for `class`, which is
+not supported by React.
 
 ```jsx del={1} ins={2} title="example.astro"
 <div className="box" dataValue="3" />
@@ -155,7 +178,8 @@ In Astro, you use the standard `kebab-case` format for all HTML attributes inste
 
 #### Multiple Elements
 
-An Astro component template can render multiple elements with no need to wrap everything in a single `<div>` or `<>`, unlike JavaScript or JSX.
+An Astro component template can render multiple elements with no need to wrap
+everything in a single `<div>` or `<>`, unlike JavaScript or JSX.
 
 ```astro title="src/components/RootElements.astro"
 ---
@@ -176,6 +200,6 @@ In Astro, you can use standard HTML comments or JavaScript-style comments.
 <!-- HTML comment syntax is valid in .astro files -->{/* JS comment syntax is also valid */}
 ```
 
-:::caution
-HTML-style comments will be included in browser DOM, while JS ones will be skipped. To leave TODO messages or other development-only explanations, you may wish to use JavaScript-style comments instead.
-:::
+:::caution HTML-style comments will be included in browser DOM, while JS ones
+will be skipped. To leave TODO messages or other development-only explanations,
+you may wish to use JavaScript-style comments instead. :::
